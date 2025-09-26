@@ -10,31 +10,141 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <title>Do you love me? | @coding.stella</title>
-</head>
-<body>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Quicksand", sans-serif;
+        background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+        background-size: 800% 800%;
+        animation: gradientBG 15s ease infinite;
+        color: #fff;
+        overflow: hidden;
+      }
 
-<div class="question-container container">
-<video class="local-gif" src="Reply me love.mp4" autoplay muted loop></video>
-  <h2 class="question">Do you love me?</h2>
-  <div class="button-container">
-    <button class="yes-btn btn js-yes-btn">Yes</button>
-    <button class="no-btn btn js-no-btn">No</button>
-  </div>
-</div>
-<div class="result-container container">
-  <video class="gif-result" src="Love me.mp4" autoplay loop></video>
-  <h2>I knew it😍!</h2>
-</div>
+      /* Gradient animation */
+      @keyframes gradientBG {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
 
-<div class="cssload-main">
-  <div class="cssload-heart">
-    <span class="cssload-heartL"></span>
-    <span class="cssload-heartR"></span>
-    <span class="cssload-square"></span>
-  </div>
-  <div class="cssload-shadow"></div>
-</div>
-<script src="script.js"></script>
+      /* Heading text style */
+      h2 {
+        color: #000; /* Black text */
+        -webkit-text-stroke: 1.5px white; /* White border around text */
+        font-size: 2.8rem;
+        text-align: center;
+        text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4, 0 0 40px #ff1493;
+        animation: textGlow 2s infinite alternate;
+      }
 
-</body>
+      @keyframes textGlow {
+        from {
+          text-shadow: 0 0 5px #fff, 0 0 10px #ff69b4, 0 0 20px #ff1493;
+        }
+        to {
+          text-shadow: 0 0 20px #fff, 0 0 30px #ff69b4, 0 0 50px #ff1493;
+        }
+      }
+
+      /* Turn on Light screen */
+      .start-screen {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+        background-size: 800% 800%;
+        animation: gradientBG 15s ease infinite;
+        z-index: 2000;
+      }
+
+      .start-btn {
+        background: #ff3366;
+        color: #fff;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.5rem;
+        border-radius: 30px;
+        cursor: pointer;
+        box-shadow: 0 0 15px #ff3366, 0 0 30px #ff6699;
+        animation: glow 1.5s infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          box-shadow: 0 0 10px #ff3366;
+        }
+        to {
+          box-shadow: 0 0 30px #ff6699, 0 0 60px #ff99cc;
+        }
+      }
+
+      /* Hide main content initially */
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background Music -->
+    <audio id="bg-music" src="romantic.mp3" loop></audio>
+
+    <!-- Turn on Light screen -->
+    <div class="start-screen" id="startScreen">
+      <button class="start-btn" id="startBtn">💡 Turn On the Light</button>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="hidden">
+      <div class="question-container container">
+        <!-- Tumhara background video yahi hai -->
+        <video class="local-gif" src="Reply me love.mp4" autoplay muted loop></video>
+        <h2 class="question">Do you love me?</h2>
+        <div class="button-container">
+          <button class="yes-btn btn js-yes-btn">Yes</button>
+          <button class="no-btn btn js-no-btn">No</button>
+        </div>
+      </div>
+
+      <div class="result-container container">
+        <video class="gif-result" src="Love me.mp4" autoplay loop></video>
+        <h2>I knew it😍!</h2>
+      </div>
+
+      <div class="cssload-main">
+        <div class="cssload-heart">
+          <span class="cssload-heartL"></span>
+          <span class="cssload-heartR"></span>
+          <span class="cssload-square"></span>
+        </div>
+        <div class="cssload-shadow"></div>
+      </div>
+    </div>
+
+    <script>
+      const startBtn = document.getElementById("startBtn");
+      const startScreen = document.getElementById("startScreen");
+      const mainContent = document.getElementById("mainContent");
+      const bgMusic = document.getElementById("bg-music");
+
+      startBtn.addEventListener("click", () => {
+        // Hide start screen
+        startScreen.style.display = "none";
+        // Show main content with background video
+        mainContent.classList.remove("hidden");
+        // Play music
+        bgMusic.play();
+      });
+    </script>
+
+    <script src="script.js"></script>
+  </body>
 </html>
